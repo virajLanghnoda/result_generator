@@ -1,0 +1,103 @@
+CREATE TABLE users (
+  Enrollment_Number INT PRIMARY KEY,
+  Role INT,
+  Name VARCHAR(255),
+  Email VARCHAR(255),
+  Password VARCHAR(255)
+);
+ALTER TABLE users add Subject_Role Int;
+
+-----------------------------------------------------------------
+Duplication handling in Add Faculty-Done
+
+----------------------------------------------------------------------
+CREATE TABLE Result (
+Enrollment_Number INTEGER PRIMARY KEY,
+firstName VARCHAR(255),
+Internal_C INTEGER,
+External_C INTEGER,
+Practical_C INTEGER,
+Internal_Java INTEGER,
+External_Java INTEGER,
+Practical_Java INTEGER,
+Internal_Python INTEGER,
+External_Python INTEGER,
+Practical_Python INTEGER,
+Internal_Maths INTEGER,
+External_Maths INTEGER,
+total_C INTEGER GENERATED ALWAYS AS (Internal_C + External_C + Practical_C) STORED,
+total_Java INTEGER GENERATED ALWAYS AS (Internal_JAVA + External_JAVA + Practical_JAVA) STORED,
+total_Python INTEGER GENERATED ALWAYS AS (Internal_PYTHON + External_PYTHON + Practical_PYTHON) STORED,
+total_Maths INTEGER GENERATED ALWAYS AS (Internal_Maths + External_Maths ) STORED,
+Total INTEGER GENERATED ALWAYS AS (total_Python+ total_Maths + total_Java + total_C) STORED,
+SPI DECIMAL(4,2),
+Status VARCHAR(10)
+);
+
+
+
+CREATE TABLE marks (
+  sub1 INT,
+  sub2 INT,
+  sub3 INT,
+  total INT GENERATED ALWAYS AS (sub1 + sub2 + sub3) STORED
+);
+
+
+-------------------------------------------------------------------------
+22/04/2023
+
+1-Encryption using Bcrypt
+2-DELETE AND VIEW MARKS IN FACULTY DASHBOARD
+->Faculty DashBoard : Add Marks 
+
+3-RAMAINING PENDIND WORK OF FACULTYDASHBOARD
+
+-----------------------------------------------------------------------
+
+check wroking of session for Student and Faculty , or else create cookie for it .
+and add marks to the result table.
+
+
+----------------------------------------------------------------------------
+
+->check why Marks are not entered into result Table
+
+->set subject in jsp addMarks .........
+
+
+		<div>
+            <label for="internalMarks">Internal Marks (out of 40):</label>
+            <input type="number" id="internalMarks" name="internalMarks" min="0" max="40" required>
+            <span class="error"></span>
+        </div>
+        <div>
+            <label for="externalMarks">External Marks (out of 60):</label>
+            <input type="number" id="externalMarks" name="externalMarks" min="0" max="60" required>
+            <span class="error"></span>
+        </div>
+        <div>
+            <label for="practicalMarks">Practical-Viva (out of 50):</label>
+            <input type="number" id="practicalMarks" name="practicalMarks" min="0" max="50" required>
+            <span class="error"></span>
+        </div>
+        
+-------------------------------------------------------------------------------------
+
+-> get a look on viewMarks and updateMarks in the facultyDashboard
+
+
+
+-----------------------------------------------------------------------------------------
+checkMarks method has been created now check it on the frontend side and make sure the 
+jsp works correctly
+
+
+->try to return -1 instead of null in dao ->this is not completely correct
+
+-----------------------------------------------------------------------------------------
+try to update grand total from the backend 
+->refer ChatGPT
+baki hai 
+---------------------------------------------------------------------------
+update link done 
